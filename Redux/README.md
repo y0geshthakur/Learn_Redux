@@ -26,4 +26,18 @@ Methods provided by Store:
 Note : If you have multiple states in the store, it is better to use multiple reducers instead of having a single reducer, because it improves readability and simplifies debugging.
 
 Multiple reducers:
-1. combinereducers : pass an object of reducers and then pass the combinedReducers to the createStore function.
+1. combineReducers : pass an object of reducers and then pass the combinedReducers to the createStore function.
+
+Immer:
+1. It is a library which allows to change states as if they we mutable.
+2. We import the produce method from immer, and pass the current state as the first parameter, and a function as the second parameter.
+3. The function takes draft as it's parameter, and allows us to directly change the state as if they were mutable.
+
+eg:     return produce(state, (draft) => {
+		draft.address.street = action.payload
+	})
+
+Middleware:
+1. It is used to perform logging, crash reporting, asynchronous tasks, etc.
+2. Provides a third party extension between dispatching an action and the moment it reaches the reducer.
+3. react-logger : Used to log all the changes in state.
