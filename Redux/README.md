@@ -41,3 +41,7 @@ Middleware:
 1. It is used to perform logging, crash reporting, asynchronous tasks, etc.
 2. Provides a third party extension between dispatching an action and the moment it reaches the reducer.
 3. react-logger : Used to log all the changes in state.
+
+Async action creators
+1. axios : Request to an API end point
+2. redux thunk : Define async action creators, middleware
