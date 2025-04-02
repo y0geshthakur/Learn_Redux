@@ -1,19 +1,12 @@
 const redux = require('redux')
-const thunkMiddleware = require('redux-thunk').thunk
 const axios = require('axios')
-
-const createStore = redux.createStore
+const thunkMiddleware = require('redux-thunk').thunk
 const applyMiddleware = redux.applyMiddleware
+const createStore = redux.createStore
 
 const FETCH_USERS_REQUESTED = 'FETCH_USERS_REQUESTED'
 const FETCH_USERS_SUCCEEDED = 'FETCH_USERS_SUCCEEDED'
 const FETCH_USERS_FAILED = 'FETCH_USERS_FAILED'
-
-const initialState = {
-    loading: false,
-    users: [],
-    error: ''
-}
 
 function fetchUsersRequested(){
     return {
@@ -33,6 +26,12 @@ function fetchUsersFailed(error){
         type: FETCH_USERS_FAILED,
         payload: error
     }
+}
+
+const initialState = {
+    loading: false,
+    users: [],
+    error: ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -75,10 +74,8 @@ const fetchUsers = () => {
 
 const store = createStore(reducer, applyMiddleware(thunkMiddleware))
 
-console.log(store.getState())
-
 const unsubscribe = store.subscribe(() => {
     console.log(store.getState());
 })
 
-store.dispatch(fetchUsers())
+store.dispatch(fetchUsers());
